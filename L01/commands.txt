@@ -1,0 +1,14 @@
+ls - look at the surroundings 
+cd - takes us to home or a new location.
+less ITEM - interact with things 
+help - shows a list of available spells
+man SPELLNAME - gives details on how to use specific spells  
+mv - moves things to another place 
+mkdir NAME - makes a new place 
+pwd - show file patch of working parent directory
+add - adds items 
+touch ITEM - makes an item 
+cp - copies one file content to another 
+rm - removes certain files 
+sudo - allows actions on any specific item 
+grep - searches file for certain item or line  
