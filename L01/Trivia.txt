@@ -1,0 +1,6 @@
+Q1 - How many sign boards did you see on your way to Paradise?
+Ans - I saw 3 signs 2 in WesternForest and 1 sign in Staircase so total of 3 signs.
+
+Q2 - Describe the differences between Linux and Windows (or MacOS) based on your own experience
+with them so far.
+Ans - Linux is an open source operating system. This means linux source code can be edited by any developer. When comparing macOS vs Linux, macOS feels smoother, faster, and easier.
