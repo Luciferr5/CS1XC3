@@ -1,0 +1,6 @@
+Q1 - How many signboards did you see on your way to Paradise?
+Ans - I saw 3 signs 2 in WesternForest and 1 sign in Staircase so a total of 3 signs.
+
+Q2 - Describe the differences between Linux and Windows (or macOS) based on your own experience
+with them so far.
+Ans - When comparing macOS vs Linux, macOS feels smoother, faster, and easier. MacOS and Linux are similar because they both use open-source software however, Linux is only open source meanwhile Mac still has some closed-source parts. Linux can also be accessed through the macOS terminal where we can practice using Linux commands.
