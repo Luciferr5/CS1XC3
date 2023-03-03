@@ -1,0 +1,3 @@
+Q3 a> because the runtime is too fast to record
+b> obvious because iteration is called once recursion is called multiple times
+c> Yes the number of inputs and number of recursive calls are directly proportional and the actual relation is close to 2^n  where n is the number of inputs .

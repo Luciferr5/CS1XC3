@@ -1,0 +1,4 @@
+4) a>  the recursive search has more repetition .
+b> The function call is ran the most in recursive algorithms and in the iterative algorithms the iterative loop is ran the most times
+c> printarray is never used
+d>A good place to start would be caching
