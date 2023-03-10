@@ -1,0 +1,139 @@
+# /etc/profile
+
+# System wide environment and startup programs, for login setup
+# Functions and aliases go in /etc/bashrc
+
+# It's NOT a good idea to change this file unless you know what you
+# are doing. It's much better to create a custom.sh shell script in
+# /etc/profile.d/ to make custom changes to your environment, as this
+# will prevent the need for merging in future updates.
+
+pathmunge () {
+    case ":${PATH}:" in
+        *:"$1":*)
+            ;;
+        *)
+            if [ "$2" = "after" ] ; then
+                PATH=$PATH:$1
+            else
+                PATH=$1:$PATH
+            fi
+    esac
+}
+
+
+if [ -x /usr/bin/id ]; then
+    if [ -z "$EUID" ]; then
+        # ksh workaround
+        EUID=`/usr/bin/id -u`
+        UID=`/usr/bin/id -ru`
+    fi
+    USER="`/usr/bin/id -un`"
+    LOGNAME=$USER
+    MAIL="/var/spool/mail/$USER"
+fi
+
+# Path manipulation
+if [ "$EUID" = "0" ]; then
+    pathmunge /usr/sbin
+    pathmunge /usr/local/sbin
+else
+    pathmunge /usr/local/sbin after
+    pathmunge /usr/sbin after
+fi
+
+HOSTNAME=`/usr/bin/hostname 2>/dev/null`
+HISTSIZE=1000
+if [ "$HISTCONTROL" = "ignorespace" ] ; then
+    export HISTCONTROL=ignoreboth
+else
+    export HISTCONTROL=ignoredups
+fi
+
+export PATH USER LOGNAME MAIL HOSTNAME HISTSIZE HISTCONTROL
+
+# By default, we want umask to get set. This sets it for login shell
+# Current threshold for system reserved uid/gids is 200
+# You could check uidgid reservation validity in
+# /usr/share/doc/setup-*/uidgid file
+if [ $UID -gt 199 ] && [ "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+    umask 002
+else
+    umask 022
+fi
+
+for i in /etc/profile.d/*.sh /etc/profile.d/sh.local ; do
+    if [ -r "$i" ]; then
+        if [ "${-#*i}" != "$-" ]; then 
+            . "$i"
+        else
+            . "$i" >/dev/null
+        fi
+    fi
+done
+
+unset i
+unset -f pathmunge
+
+if [ -n "${BASH_VERSION-}" ] ; then
+        if [ -f /etc/bashrc ] ; then
+                # Bash login shells run only /etc/profile
+                # Bash non-login shells run only /etc/bashrc
+                # Check for double sourcing is done in /etc/bashrc.
+                . /etc/bashrc
+       fi
+fi
+------
+ 16:09:05 up 83 days,  7:16, 51 users,  load average: 0.92, 1.19, 1.23
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ashras17 pts/403  172.18.105.152   15:26   17.00s  0.18s  0.18s -bash
+hobincan pts/432  130.113.89.117   13:11    1:37m  0.40s  0.40s -bash
+batraa11 pts/450  172.18.44.7      15:12    9.00s  0.44s  0.44s -bash
+kaura69  pts/452  172.18.41.159    15:10   25.00s  0.57s  0.57s -bash
+guow42   pts/380  172.17.58.124    13:40   48:01   0.39s  0.39s -bash
+nakamurs pts/392  172.18.118.223   15:28    5:29   0.17s  0.17s -bash
+shahim46 pts/431  172.18.105.65    14:51   31.00s  0.59s  0.59s -bash
+ashras17 pts/447  172.17.56.64     14:34    1:33m  0.05s  0.05s -bash
+naganobc pts/378  172.18.114.185   16:05    3:11   0.05s  0.05s -bash
+nairs22  pts/394  172.18.52.194    10:57    3:35m  0.26s  0.26s -bash
+bijon    pts/479  172.18.97.91     15:21   20:11   0.31s  0.31s -bash
+muravun  pts/493  172.17.56.229    14:48    1:06m  0.08s  0.02s nano compiletop.sh
+alvarr5  pts/507  172.18.117.192   15:43    9.00s  0.09s  0.09s -bash
+xu518    pts/502  172.17.67.179    14:06   55:13   0.44s  0.44s -bash
+pamukcua pts/513  172.17.133.63    15:21   24:33   2.39s  0.38s -bash
+saeede2  pts/515  172.18.105.33    15:28   16.00s  1.55s  0.60s -bash
+sidda1   pts/531  172.17.209.171   14:48    1:11m  0.12s  0.12s -bash
+xu518    pts/525  172.18.115.13    15:29    9.00s  0.35s  0.35s -bash
+defoortp pts/528  172.17.101.192   14:47    1:20m  0.06s  0.06s -bash
+madhus2  pts/561  172.18.112.74    12:38    1:07   0.36s  0.36s -bash
+johalj11 pts/560  172.18.115.77    15:43    6.00s  0.15s  0.15s -bash
+rastogig pts/572  172.18.48.157    14:49    1:16m  0.09s  0.09s -bash
+ashras17 pts/530  172.17.56.64     13:36   50:25   0.31s  0.31s -bash
+guow42   pts/565  172.26.205.128   12:15    2:59m  0.23s  0.23s -bash
+rezkallb pts/574  172.18.112.227   15:26   42:27   0.04s  0.04s -bash
+sajjaa7  pts/592  172.18.96.14     15:04   20:01   0.12s  0.12s -bash
+ebrahp2  pts/600  172.18.107.59    15:30    0.00s  0.37s  0.18s /tmp/.mount_nvimGmKmwl/usr/bin/nvim .bashrc
+nairs22  pts/614  172.18.118.152   15:30    1:45   0.33s  0.33s -bash
+zhoua39  pts/627  172.17.71.236    13:05    2:04m  0.09s  0.09s -bash
+wangq198 pts/629  172.18.119.246   15:36    9.00s  0.25s  0.06s vim compiletop.sh
+yashikay pts/620  172.18.203.168   15:31   35:36   0.08s  0.08s -bash
+naganobc pts/663  172.18.114.185   15:41    2:25   0.13s  0.13s -bash
+jeonj10  pts/664  172.18.114.236   16:06    1.00s  0.12s  0.12s -bash
+alih98   pts/671  172.18.123.140   13:05    2:03m  0.66s  0.66s -bash
+bijon    pts/691  172.17.64.216    12:16    1:34m  0.29s  0.29s -bash
+guow42   pts/590  172.18.112.172   15:27   14.00s  0.30s  0.02s nano compiletop.sh
+alvarr5  pts/631  172.18.117.192   15:32   26:44   0.05s  0.05s -bash
+muravun  pts/630  172.18.118.186   15:34   28:15   0.10s  0.02s nano runtop.sh
+hobincan pts/662  172.18.111.142   15:41   25:53   0.05s  0.05s -bash
+alih98   pts/673  172.18.111.132   15:46    4:01   0.11s  0.11s -bash
+pamukcua pts/677  172.18.118.83    15:57   48.00s  0.12s  0.12s -bash
+zhoue5   pts/689  172.18.112.79    15:50   17.00s  0.89s  0.32s emacs runtop.sh
+rastogig pts/690  172.18.114.128   15:54    9:36   0.06s  0.06s -bash
+saxenp4  pts/693  172.18.16.178    16:02    1.00s  0.19s  0.10s w
+zhoua39  pts/699  172.18.112.40    16:01    0.00s  0.10s  0.10s -bash
+gaos74   pts/700  172.18.104.254   15:58    5:29   0.08s  0.08s -bash
+suks2    pts/701  172.18.108.193   16:00   48.00s  0.74s  0.15s -bash
+wadehrak pts/702  172.17.62.73     16:00   36.00s  0.19s  0.00s /usr/libexec/git-core/git remote-https origin https://github.com/Kavishw/CS1XC3.git
+zhu37    pts/703  172.18.205.7     16:03    2:33   0.05s  0.05s -bash
+mohas31  pts/704  172.18.118.38    16:07    1:50   0.05s  0.05s -bash
+rastom1  pts/705  172.18.51.175    16:07   20.00s  0.06s  0.06s -bash
