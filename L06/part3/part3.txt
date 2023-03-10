@@ -1,0 +1,7 @@
+export PATH
+export PATH=$PATH:/home/saxenp4/CS1XC3/L06/part3
+
+export PS1='\u:\h:\W# '
+cd /home/saxenp4/CS1XC3
+git pull
+cd ~
