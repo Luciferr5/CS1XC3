@@ -4,3 +4,6 @@
 [submodule "L03/1XC3_L03"]
 	path = L03/1XC3_L03
 	url = git@github.com:Luciferr5/1XC3_L03.git
+[submodule "L07/--force"]
+	path = L07/--force
+	url = git@github.com:Luciferr5/1XC3_L07.git
