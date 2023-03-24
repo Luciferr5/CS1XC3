@@ -7,3 +7,12 @@
 [submodule "L07/--force"]
 	path = L07/--force
 	url = git@github.com:Luciferr5/1XC3_L07.git
+[submodule "L08/Activity2"]
+	path = L08/Activity2
+	url = git@github.com:Luciferr5/Activity2.git
+[submodule "L08/Activity1-"]
+	path = L08/Activity1-
+	url = git@github.com:Luciferr5/Activity1-.git
+[submodule "L08/CS1XC3_L08_P3"]
+	path = L08/CS1XC3_L08_P3
+	url = git@github.com:Luciferr5/CS1XC3_L08_P3.git
