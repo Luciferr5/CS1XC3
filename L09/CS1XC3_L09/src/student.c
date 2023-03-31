@@ -1,3 +1,11 @@
+/**
+ * @file student.h
+ * @author Prakhar Saxena 
+ * @date 27/3/2023
+ * @brief It is a file which contains the functions definition of the ones on 
+ * the _student struct
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
