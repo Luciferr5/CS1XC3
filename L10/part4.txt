@@ -1,0 +1,11 @@
+find exercises -type f -name '*.txt' -exec sed -i 's/backwards/forwards/g' {} +
+find exercises -type f -name '*.tex' -exec sed -i 's/\\includegraphics\[[^]]*\]{[^}]*}//g' {} +
+find exercises -type f -name '*.tex' -exec sed -i 's/\\begin{itemize}/\\begin{enumerate}/g' {} +
+find exercises -type f \( -name '*.tex' -o -name '*.txt' \) -exec sed -i 's/\./\\textsuperscript{[citation needed]}\./g' {} +
+find exercises -type f -name '*.tex' -exec awk 'NR>=100 && NR<=300 {gsub(/\w+ing\b/, "a gerund")} 1' {} > temp && mv temp {} \;
+find exercises -type f -name '*.log' -exec sed -i '15,18d' {} +
+find exercises -type f -name '*.tex' -exec sed -i 's/\\textbf\{/\textit\{/g' {} +
+find exercises -type f \( -name '*.tex' -o -name '*.txt' \) -exec sed -i 's/[AEIOUaeiou]//g' {} +
+find exercises -type f -name '*.tex' -exec sed -i 's/^\([^%]*\)\(\(\\%\)*%\).*$/\1/g' {} +
+find exercises -type f \( -name '*.tex' -o -name '*.txt' \) -exec sed -i 's/[.,;:?!]/!/g' {} +
+

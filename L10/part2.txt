@@ -1,0 +1,16 @@
+find . -name "*.tex"
+find . -name "*.tex" ! -name "template.tex"
+find . -name "*.tex" -exec wc -l {} \;
+find . -name "*.tex" -o -name "*.pdf" -o -name "*.toc
+find . -type f \( -iname "topic*[7-9]*.pdf" -o -iname "topic*[1-9][0-9]*.pdf" \)
+find . -name "*~" -exec rm {} \;
+find . -name "#*#" -exec rm {} \;
+find . -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.bmp" -o -iname "*.webp" \) -name "??????????" > goodFiles.txt
+find . -type f -iname "*.log" -not -iname "allTheLogs.log" -exec cat {} \; >> allTheLogs.log
+find . -name "*C*.aux" -exec sed -n '10p' {} \;
+find . -type f -iname "*.sh" -exec chmod +x {} \;
+find . -type f -name "* and *" -exec head -n 10 {} >> allheads.txt \;
+find . -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.webp" \) -exec cp {} exercises/image_backup/ \;
+cat exercises/Part2/filenames.txt
+find . -type f \( -iname "*.tex" -o -iname "*.pdf" -o -iname "*C*.png" \)
+
